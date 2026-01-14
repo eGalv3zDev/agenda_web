@@ -5,10 +5,30 @@ let app = document.getElementById("app");
 
 let nav = document.getElementById("nav");
 
-nav.appendChild(Button("Agenda", "agenda", "person.svg"));
-nav.appendChild(Button("+", "plus", "nuevo.svg"));
+nav.appendChild(Button(
+    "Agenda", 
+    "agenda", 
+    "person.svg",
+    function() {
+        container.innerHTML = "";
+        container.appendChild(Contactos());
+    }
+));
+nav.appendChild(Button(
+    "Crear contacto", 
+    "plus", 
+    "nuevo.svg",
+    function () {
+        container.innerHTML = "";
+        container.appendChild(NewContactForm());
+    }
+));
 nav.appendChild(Button("ToDoList", "todoList", "agenda.svg"));
+nav.appendChild(Button("Crear tarea", "plus", "plus.svg"));
 
 let container = document.getElementById("container");
-container.appendChild(Contactos());
-container.appendChild(NewContactForm());
+
+container.innerHTML = "";
+
+//container.appendChild(Contactos());
+//container.appendChild(NewContactForm());
