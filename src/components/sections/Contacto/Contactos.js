@@ -1,20 +1,31 @@
-import { ItemContacto } from "../../../../src/components/sections/common/ItemContacto.js";
-import { ContactList } from "./db/js";
+import { getContactsFromStorage, saveContactsToStorage } from "../LocalStorage/storage.js";
+import { ItemContacto } from "../../common/itemContacto/ItemContacto.js";
 
-let Contactos = () => {
-    let sectionContactos = document.createElement("section");
-    sectionContactos.className = "contactos";
+function Contactos(container) {
+    container.innerHTML = ""; // Limpiar contenedor
 
-    let h2 = document.createElement("h2");
-    h2.textContent = "contactos";
-    sectionContactos.appendChild(h2);
+    const contactos = getContactsFromStorage();
 
-    ContactList.array.forEach((contact) => {
-        sectionContactos.appendChild(ItemContacto("user2.svg",
-        contact.nombre, contact.telefono));
+    contactos.forEach((c, index) => {
+        const item = ItemContacto(c.img || "person.svg", c.nombre, c.telefono);
+
+        // Botón borrar
+        const btnBorrar = document.createElement("button");
+        btnBorrar.textContent = "Borrar";
+        btnBorrar.className = "btn-borrar-contacto";
+        btnBorrar.addEventListener("click", () => {
+            if (confirm(`¿Deseas borrar el contacto ${c.nombre}?`)) {
+                contactos.splice(index, 1); // eliminar del array
+                saveContactsToStorage(contactos); // guardar cambios
+                Contactos(container); // recargar la vista
+            }
+        });
+
+        item.appendChild(btnBorrar);
+        container.appendChild(item);
     });
 
-    return sectionContactos;
-};
+    return container;
+}
 
 export { Contactos };

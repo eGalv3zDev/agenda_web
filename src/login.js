@@ -1,6 +1,7 @@
 let login = function () {
   // Crear el contenedor de login
   let loginSection = document.createElement("section");
+  loginSection.className = "login-section";
 
   // Crear el título del login
   let h3 = document.createElement("h3");
@@ -16,9 +17,22 @@ let login = function () {
   password.type = "password";
   password.placeholder = "Password";
 
-  // Crear el botón
+  // Crear el botón de iniciar sesión
   let button = document.createElement("button");
-  button.innerHTML = "Iniciar Sesion";
+  button.innerHTML = "Iniciar Sesión";
+
+  // **Redirección al hacer clic**
+  button.addEventListener("click", function () {
+    const username = user.value.trim();
+    const pwd = password.value.trim();
+
+    if (username !== "" && pwd !== "") {
+      // Redirige a app.html (asegúrate de que esté en la misma carpeta que index.html)
+      window.location.href = "app.html";
+    } else {
+      alert("Por favor, ingresa usuario y contraseña");
+    }
+  });
 
   // Agregar los elementos al contenedor de login
   loginSection.appendChild(h3);

@@ -1,28 +1,33 @@
-let login = function () {
+export function login() {
+    const loginSection = document.createElement("section");
+    loginSection.className = "login-section";
 
-let login = document. createElement("section");
+    const h3 = document.createElement("h3");
+    h3.textContent = "Login";
 
-let h3 = createElement("h3");
-h3.innerHTML = "Login";
+    const user = document.createElement("input");
+    user.type = "text";
+    user.placeholder = "Usuario";
 
-let user = document.createElement("input");
-user.type = "text";
-user.placeholder = "Usuario";
+    const password = document.createElement("input");
+    password.type = "password";
+    password.placeholder = "Contraseña";
 
-let password = document.createElement("input");
-password. type = "password";
-password. placeholder = "Password";
+    const button = document.createElement("button");
+    button.textContent = "Iniciar Sesión";
 
-let button = document.createElement("button");
-button. innerHTML = "Iniciar Sesion";
+    button.addEventListener("click", () => {
+        if (user.value.trim() && password.value.trim()) {
+            window.location.href = "app.html";
+        } else {
+            alert("Por favor, ingresa usuario y contraseña");
+        }
+    });
 
-login.appendChild(h3);
-login.appendChild(user);
-login. appendChild(password);
-login.appendChild(button);
+    loginSection.appendChild(h3);
+    loginSection.appendChild(user);
+    loginSection.appendChild(password);
+    loginSection.appendChild(button);
 
-return login;
-
+    return loginSection;
 }
-
-export {login};

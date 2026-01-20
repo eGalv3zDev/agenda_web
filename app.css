@@ -1,28 +1,163 @@
-*{
+/* RESET GENERAL */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-    background-color: #4B3621;
+    background-color: #f9f9f9;
+    color: #333;
 }
 
+/* CONTENEDOR PRINCIPAL */
 #app {
- width: 100vw;
- height: 100vh;
- display: flex;
- gap: 10px;   
+    display: flex;
+    min-height: 100vh;
+    gap: 10px;
 }
 
+/* NAVEGACIÓN LATERAL */
 #nav {
-    width: 30%;
-    height: 100vh;
-    border: 1px solid #007;
+    width: 250px;
+    background-color: #fff;
+    border-right: 1px solid #ccc;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-#contrainer {
-    width: 70%;
-    height: 100vh;
-    border: 1px solid #007;
+/* BOTONES DE NAVEGACIÓN */
+#nav button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    background-color: #e0e0e0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    transition: background-color 0.2s;
+}
+
+#nav button img {
+    width: 20px;
+    height: 20px;
+}
+
+#nav button:hover {
+    background-color: #d4d4d4;
+}
+
+/* CONTENEDOR PRINCIPAL DE CONTENIDO */
+#container {
+    flex: 1;
+    background-color: #fff;
+    padding: 20px;
+    overflow-y: auto;
+    border-left: 1px solid #ccc;
+}
+
+/* FORMULARIOS */
+form.new-contact-form,
+form.new-todo-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 500px;
+    margin: 0 auto;
+    background-color: #fefefe;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+}
+
+form h2 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+form label {
+    font-weight: 500;
+}
+
+form input {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 16px;
+}
+
+form button {
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.2s;
+}
+
+form button:hover {
+    background-color: #45a049;
+}
+
+/* LISTA DE CONTACTOS */
+.contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-item {
+    background-color: #f3f3f3;
+    padding: 15px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    box-shadow: 0px 0px 5px rgba(0,0,0,0.05);
+}
+
+.contact-item button {
+    width: 150px;
+    padding: 8px;
+    font-size: 14px;
+    background-color: #2196F3;
+}
+
+.contact-item button:hover {
+    background-color: #1976D2;
+}
+
+.contact-item ul {
+    list-style: disc inside;
+    margin-left: 10px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    #app {
+        flex-direction: column;
+    }
+
+    #nav {
+        width: 100%;
+        flex-direction: row;
+        overflow-x: auto;
+    }
+
+    #nav button {
+        flex: 1;
+        justify-content: center;
+    }
+
+    #container {
+        border-left: none;
+        border-top: 1px solid #ccc;
+    }
 }

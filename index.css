@@ -1,18 +1,44 @@
-.div-padre {
+/* Fondo de la página y centrar el login */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
     display: flex;
-    border: 1px solid black;
-    gap: 5px;
-    padding: 5px;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
-.div-uno {
-    border: 1px solid blue;
-    height: 50px;
-    width: 50px;
+/* Contenedor del login */
+.login-section {
+    background-color: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 300px;
 }
 
-.div-dos {
-    border: 1px solid red;
-    height: 50px;
-    width: 50px;
+/* Inputs del login */
+.login-section input {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Botón de login */
+.login-section button {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover del botón */
+.login-section button:hover {
+    background-color: #45a049;
 }
