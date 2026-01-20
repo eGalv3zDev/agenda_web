@@ -29,6 +29,21 @@ nav.appendChild(Button("Crear tarea", "plus", "plus.svg"));
 let container = document.getElementById("container");
 
 container.innerHTML = "";
+container.appendChild(Contactos());
 
-//container.appendChild(Contactos());
 //container.appendChild(NewContactForm());
+
+async function tareas() {
+  try {
+        let datos = await fetch("http://jsonplaceholder.typicode.com/posts")
+        let r = await data.json();
+        console.log(r);
+        
+  } catch (error) {
+        console.log(error);
+  }  
+}
+
+tareas();
+
+console.log("completado");
