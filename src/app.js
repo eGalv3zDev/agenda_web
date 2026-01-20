@@ -1,86 +1,30 @@
 import { Button } from "./components/common/button/button.js";
-import { NewContactForm } from "./components/sections/NewContactForm/NewContactForm.js";
-import { Contactos } from "./components/sections/Contacto/Contactos.js";
-import { NewToDoList } from "./components/sections/newtodoform/Newtodoform.js";
-import { getToDoListFromStorage } from "./components/sections/LocalStorage/todolistStorage.js";
-import { ItemToDoList } from "./components/itemTodoList/Itemtodolist.js";
+import { Contacts } from "./components/sections/contactos/Contacts.js";
+import { viewContacts, viewNewContacts, viewToDoList, viewNewTask } from "./components/layout/navigation/NavControlers.js";
 
-document.addEventListener("DOMContentLoaded", () => {
-    const nav = document.getElementById("nav");
-    const container = document.getElementById("container");
+let app = document.getElementById("app");
+let nav = document.getElementById("nav");
+let container = document.getElementById("container");
 
-    // -----------------------------
-    // Contactos
-    // -----------------------------
-    function viewContacts() {
-        // Contactos.js ya maneja el container
-        Contactos(container);
-    }
+nav.className = "nav-bar";
+container.className = "main-container card";
 
-    function createContact() {
-        container.innerHTML = "";
-        container.appendChild(NewContactForm(viewContacts)); // opcional callback para recargar
-    }
+nav.appendChild(Button("Lista de Contactos", "agenda", "account.svg", viewContacts));
+nav.appendChild(Button("Agregar Contacto", "plus", "plus.svg", viewNewContacts));
+nav.appendChild(Button("Lista de Tareas", "taskList", "toDoList.svg", viewToDoList));
+nav.appendChild(Button("Agregar Tareas", "plus", "plus.svg", viewNewTask));
 
-    // -----------------------------
-    // ToDoList
-    // -----------------------------
-    function viewToDoList() {
-        container.innerHTML = "";
+container.appendChild(Contacts());
 
-        const tareas = getToDoListFromStorage();
+async function tasks() {
+  try {
+    let datos = await fetch("https://jsonplaceholder.typicode.com/posts");
+    let r = await datos.json();
+    console.log(r);
+  } catch (error) {
+    console.error(error);
+  }
+}
 
-        if (tareas.length === 0) {
-            const p = document.createElement("p");
-            p.textContent = "No hay tareas.";
-            container.appendChild(p);
-        } else {
-            tareas.forEach((tarea, index) => {
-                container.appendChild(ItemToDoList(tarea.texto, tarea.completada, index));
-            });
-        }
-    }
-
-    function createTask() {
-        container.innerHTML = "";
-
-        // Contenedor formulario
-        const formContainer = document.createElement("div");
-        formContainer.className = "form-todo-container";
-        formContainer.appendChild(NewToDoList(renderList));
-
-        // Contenedor lista
-        const listContainer = document.createElement("div");
-        listContainer.className = "todo-list-container";
-
-        container.append(formContainer, listContainer);
-
-        // Función para renderizar la lista
-        function renderList() {
-            listContainer.innerHTML = "";
-            const tareas = getToDoListFromStorage();
-            if (tareas.length === 0) {
-                const p = document.createElement("p");
-                p.textContent = "No hay tareas aún.";
-                listContainer.appendChild(p);
-            } else {
-                tareas.forEach((tarea, index) => {
-                    listContainer.appendChild(ItemToDoList(tarea.texto, tarea.completada, index));
-                });
-            }
-        }
-
-        renderList();
-    }
-
-    // -----------------------------
-    // Botones de navegación
-    // -----------------------------
-    nav.appendChild(Button("Agenda", "agenda", "person.svg", viewContacts));
-    nav.appendChild(Button("Crear contacto", "plus", "nuevo.svg", createContact));
-    nav.appendChild(Button("ToDoList", "todoList", "agenda.svg", viewToDoList));
-    nav.appendChild(Button("Crear tarea", "plus", "plus.svg", createTask));
-
-    // Mostrar contactos al inicio
-    viewContacts();
-});
+tasks();
+console.log("Completed");

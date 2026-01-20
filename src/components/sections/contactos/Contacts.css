@@ -1,0 +1,18 @@
+.contacts-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contacts-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #f1f5f9;
+  margin: 0;
+}
+
+.contacts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

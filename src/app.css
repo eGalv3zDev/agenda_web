@@ -5,6 +5,30 @@ body {
   margin: 0;
 }
 
+/* Layout */
+
+#app {
+  display: flex;
+  min-height: 100vh;
+}
+
+.nav-bar {
+  width: 220px;
+  background: #0f141b;
+  border-right: 1px solid #2a3442;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.main-container {
+  flex: 1;
+  padding: 24px;
+}
+
+/* Cards */
+
 .card {
   background: #151b23;
   border-radius: 16px;
@@ -12,6 +36,8 @@ body {
   box-shadow: 0 8px 25px rgba(0,0,0,0.6);
   border: 1px solid #2a3442;
 }
+
+/* Buttons */
 
 button {
   background: #1f2937;
@@ -23,6 +49,9 @@ button {
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 button:hover {
@@ -34,44 +63,19 @@ button:active {
   transform: scale(0.96);
 }
 
-/* Login */
+/* Text */
 
-.login-container {
-  width: 320px;
-  margin: 100px auto;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  text-align: center;
-}
-
-.login-title {
-  font-size: 20px;
-  font-weight: 600;
+h1, h2, h3 {
   color: #f1f5f9;
 }
 
-.login-input {
-  background: #0f141b;
-  border: 1px solid #2a3442;
-  border-radius: 6px;
-  padding: 10px;
-  color: #f1f5f9;
-  font-size: 14px;
-  outline: none;
+/* Scroll */
+
+::-webkit-scrollbar {
+  width: 6px;
 }
 
-.login-input::placeholder {
-  color: #9ca3af;
-}
-
-.login-input:focus {
-  border-color: #4b5563;
-  background: #121926;
-}
-
-.login-btn {
-  margin-top: 10px;
-  padding: 8px;
-  font-size: 14px;
+::-webkit-scrollbar-thumb {
+  background: #374151;
+  border-radius: 10px;
 }

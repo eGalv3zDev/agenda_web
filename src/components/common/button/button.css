@@ -1,40 +1,43 @@
-.boton-cafe {
-  background: linear-gradient(145deg, #8b5a2b, #4e2e1f);
-  color: #fdfdfd;
-  border: 2px solid #c2a383;
-  border-radius: 25px;
-  padding: 14px 32px;
-  font-size: 18px;
-  font-weight: bold;
-  letter-spacing: 2px;
+.nav-button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: #0f141b;
+  border: 1px solid #2a3442;
   cursor: pointer;
-  transition: all 0.35s ease;
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
-  text-transform: uppercase;
-  position: relative;
-  overflow: hidden;
+  transition: all 0.2s ease;
 }
 
-/* Hover flotado */
-.boton-cafe:hover {
-  transform: translateY(-7px) scale(1.05);
-  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.45);
-  border-color: #fdfdfd;
+.nav-button:hover {
+  background: #1a2230;
+  border-color: #4b5563;
 }
 
-/* Brillo animado */
-.boton-cafe::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 60%;
-  height: 100%;
-  background: linear-gradient(
-    120deg,
-    transparent,
-    rgba(255, 255, 255, 0.5),
-    transparent
-  );
-  transition: all 0.6s ease;
+.nav-button:active {
+  transform: scale(0.97);
+}
+
+.button-image {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #151b23;
+  border-radius: 6px;
+}
+
+.button-image img {
+  width: 16px;
+  height: 16px;
+  filter: brightness(0) invert(1);
+}
+
+.button-text {
+  font-size: 13px;
+  color: #e6e6e6;
+  font-weight: 500;
+  margin: 0;
 }

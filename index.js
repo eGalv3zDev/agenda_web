@@ -1,12 +1,5 @@
-import { login } from "./login.js";
+import { login } from "./src/components/sections/login/Login.js";
 
-document.addEventListener("DOMContentLoaded", () => {
-    const root = document.getElementById("root");
+let root = document.getElementById("root");
 
-    if (!root) {
-        console.error("No se encontró el contenedor #root");
-        return;
-    }
-
-    root.appendChild(login());
-});
+root.appendChild(login());
